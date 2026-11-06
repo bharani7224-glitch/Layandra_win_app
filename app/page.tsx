@@ -1,69 +1,168 @@
-import Image from "next/image";
+'use client';
+
+import dynamic from 'next/dynamic';
+
+const Lanyard = dynamic(() => import('@/components/Lanyard'), {
+  ssr: false,
+});
+
+const Galaxy = dynamic(() => import('@/components/Galaxy'), {
+  ssr: false,
+});
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <>
+      {/* Galaxy Background */}
+      <div className="galaxy-bg-wrapper" aria-hidden="true">
+        <Galaxy
+          mouseInteraction={true}
+          glowIntensity={0.35}
+          starSpeed={0.5}
+          density={1}
+          hueShift={240}
+          transparent={true}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </div>
+
+      {/* Hanging ID Card Badge in Top-Right Corner */}
+      <div className="lanyard-badge-container" aria-label="Interactive Hanging ID Badge">
+        <Lanyard
+          frontImage="/id-card-photo.png"
+          imageFit="cover"
+          orientation="portrait"
+          cardColor="#1a0b2e"
+          strapColor="#500071"
+          metal="silver"
+          finish="glossy"
+          interactive={true}
+          gravity={1}
+          breeze={0.25}
+          elasticity={0.7}
+          damping={1.985}
+          size={0.65}
+          strapLength={0.4}
+        />
+      </div>
+
+      {/* Website Main Content */}
+      <div className="website">
+        {/* Navbar */}
+        <nav className="navbar">
+          <div className="logo">
+            NEX<span>ORA.DEV</span>
+          </div>
+
+          <div className="nav-links">
+            <a href="#home" className="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+          </div>
+
+          <button className="nav-button" type="button">
+            Get Started <span>↗</span>
+          </button>
+        </nav>
+
+        {/* Hero Section */}
+        <main className="hero" id="home">
+          <div className="hero-content">
+            <span className="hero-tag">
+              ✦ CREATIVE DIGITAL AGENCY
+            </span>
+
+            <h1>
+              Build Your
+              <span> Digital Future.</span>
+            </h1>
+
+            <p>
+              We create modern digital experiences that help
+              businesses grow, innovate, and stand out.
+            </p>
+
+            <div className="hero-buttons">
+              <button className="primary-btn" type="button">
+                Explore Our Work ↗
+              </button>
+
+              <button className="secondary-btn" type="button">
+                Learn More
+              </button>
+            </div>
+
+            <div className="hero-stats">
+              <div>
+                <h3>50+</h3>
+                <span>Projects</span>
+              </div>
+
+              <div>
+                <h3>30+</h3>
+                <span>Clients</span>
+              </div>
+
+              <div>
+                <h3>5+</h3>
+                <span>Years Experience</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="hero-visual">
+            <div className="hero-circle">
+              <span>N</span>
+            </div>
+            <div className="floating-card">
+              ✦ Innovation Starts Here
+            </div>
+          </div>
+        </main>
+
+        {/* About Section */}
+        <section className="about-section" id="about">
+          <div className="about-left">
+            <span className="section-tag">✦ ABOUT NEXORA</span>
+
+            <h2>
+              We Turn Ideas Into
+              <span> Digital Reality.</span>
+            </h2>
+
+            <p>
+              We are a creative digital agency focused on building
+              meaningful digital experiences. We combine creativity,
+              technology, and strategy to help businesses grow.
+            </p>
+
+            <button className="primary-btn" type="button">
+              Discover More ↗
+            </button>
+          </div>
+
+          <div className="about-right">
+            <div className="about-card">
+              <span className="about-number">01</span>
+              <h3>Creative Thinking</h3>
+              <p>Fresh ideas and innovative solutions for every challenge.</p>
+            </div>
+
+            <div className="about-card">
+              <span className="about-number">02</span>
+              <h3>Modern Technology</h3>
+              <p>Building reliable and scalable digital experiences.</p>
+            </div>
+
+            <div className="about-card">
+              <span className="about-number">03</span>
+              <h3>Business Growth</h3>
+              <p>Turning technology into measurable business value.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </>
   );
 }

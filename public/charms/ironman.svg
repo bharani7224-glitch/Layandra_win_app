@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="180" height="180">
+  <defs>
+    <radialGradient id="reactorGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stopColor="#ffffff" />
+      <stop offset="35%" stopColor="#80f3ff" />
+      <stop offset="70%" stopColor="#00b4d8" />
+      <stop offset="100%" stopColor="#0077b6" />
+    </radialGradient>
+    <linearGradient id="ironGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#ffe066" />
+      <stop offset="45%" stopColor="#f59f00" />
+      <stop offset="80%" stopColor="#d9480f" />
+      <stop offset="100%" stopColor="#f59f00" />
+    </linearGradient>
+    <linearGradient id="ironRed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#e03131" />
+      <stop offset="50%" stopColor="#9b111e" />
+      <stop offset="100%" stopColor="#5c0008" />
+    </linearGradient>
+    <filter id="arcGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" floodColor="#000000" floodOpacity="0.75" />
+      <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  <g filter="url(#arcGlow)">
+    <!-- Outer Reactor Armor Ring -->
+    <circle cx="90" cy="90" r="82" fill="url(#ironRed)" stroke="url(#ironGold)" stroke-width="5" />
+    <!-- Segmented Tech Ring -->
+    <circle cx="90" cy="90" r="68" fill="none" stroke="#1a1c22" stroke-width="12" stroke-dasharray="24 8" />
+    <circle cx="90" cy="90" r="68" fill="none" stroke="url(#ironGold)" stroke-width="2" />
+    <circle cx="90" cy="90" r="54" fill="#0d1117" stroke="url(#ironGold)" stroke-width="4" />
+    
+    <!-- Triangular Power Core -->
+    <polygon points="90,44 128,112 52,112" fill="url(#reactorGlow)" stroke="#ffffff" stroke-width="2" />
+    <polygon points="90,56 118,106 62,106" fill="#001824" opacity="0.65" />
+    
+    <!-- Central Core Node -->
+    <circle cx="90" cy="90" r="16" fill="url(#reactorGlow)" stroke="#ffffff" stroke-width="2" />
+    <circle cx="90" cy="90" r="7" fill="#ffffff" />
+  </g>
+</svg>
+
